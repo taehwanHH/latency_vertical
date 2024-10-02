@@ -1,6 +1,7 @@
 import torch
 from datetime import datetime
 
+
 Hyper_Param = {
     'today': datetime.now().strftime('%Y-%m-%d'),
     'DEVICE': 'cuda' if torch.cuda.is_available() else 'cpu',

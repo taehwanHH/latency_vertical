@@ -10,6 +10,7 @@ DEVICE = Hyper_Param['DEVICE']
 _iscomplex = Hyper_Param['_iscomplex']
 channel_type = Hyper_Param['channel_type']
 SNR = Hyper_Param['SNR']
+print(SNR)
 
 class OrnsteinUhlenbeckProcess:
     """
@@ -62,7 +63,7 @@ class Actor(nn.Module,RoboticEnv):
             encoded_list.append(normalized)
 
         encoded = torch.cat(encoded_list,dim=1).to(DEVICE)
-        seed = torch.randint(low=0, high=1000, size=(1,)).to(DEVICE).item()
+        seed = torch.randint(low=0, high=10000, size=(1,)).to(DEVICE).item()
 
         # encoded = self.sensor_encoder(state)
         # normalized = self.NormalizeTX.apply(encoded)

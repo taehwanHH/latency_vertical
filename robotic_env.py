@@ -17,7 +17,7 @@ Max_time= Robot_Param['Max_time']
 State_normalizer = Robot_Param['State_normalizer']
 h_threshold = Robot_Param['h_threshold']
 rot_threshold = Robot_Param['rot_threshold']
-
+comm_latency = Robot_Param['comm_latency']
 
 # mujoco-py
 xml_path = "sim_env.xml"
@@ -93,13 +93,17 @@ class RoboticEnv:
         self.flag = 0
         self.z_pos = 0
         self.task_success = 0
-        self.time = 0
+
 
     def step(self, action):
         self.time_step += 1
 
+        for _ in range(comm_latency):
+            sim.step()
+            viewer.render()
+
         actuator_write(self.num_robot, action)
-        self.time = time.time()
+
         for _ in range(Sensing_interval):
             sim.step()
             viewer.render()

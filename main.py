@@ -1,19 +1,26 @@
 import torch
 import os
+from param import Hyper_Param
+from DDPG_module.train_utils import parse_args
+
+args = parse_args()
+if args.snr is not None:
+    Hyper_Param['SNR'] = args.snr
+if args.channel_type is not None:
+    Hyper_Param['channel_type'] = args.channel_type
+
+
 from DDPG_module.DDPG import DDPG, Actor, Critic, prepare_training_inputs
 from DDPG_module.DDPG import OrnsteinUhlenbeckProcess as OUProcess
-
 from DDPG_module.memory import ReplayMemory
 from DDPG_module.target_update import soft_update
 
-import matplotlib.pyplot as plt
 from scipy.io import savemat
-from collections import deque
-from param import Hyper_Param
 
 from robotic_env import RoboticEnv
 import time
 os.environ['KMP_DUPLICATE_LIB_OK'] ='True'
+
 
 # Hyperparameters
 DEVICE = Hyper_Param['DEVICE']
@@ -69,8 +76,7 @@ for n_epi in range(total_eps):
         a = agent.get_action(s, agent.epsilon*ou_noise()).view(-1)
 
         ns, r, done, info = env.step(a)
-        end_time = env.time
-        print(end_time-start_time)
+
         episode_return += r.item()
         experience = (s.view(-1, s_dim),
                       a.view(-1, a_dim),
