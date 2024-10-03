@@ -10,7 +10,6 @@ DEVICE = Hyper_Param['DEVICE']
 _iscomplex = Hyper_Param['_iscomplex']
 channel_type = Hyper_Param['channel_type']
 SNR = Hyper_Param['SNR']
-print(SNR)
 
 class OrnsteinUhlenbeckProcess:
     """

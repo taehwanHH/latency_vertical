@@ -6,5 +6,4 @@ Robot_Param = {
     'State_normalizer' : 1000,
     'h_threshold' : 2,
     'rot_threshold' : 40,
-    'comm_latency' : 30 # ms
 }

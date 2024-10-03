@@ -102,6 +102,7 @@ class Channel:
 
     def awgn(self, x, seed,snr):
         torch.manual_seed(seed)
+        x = x.clone()
         std = (10 ** (-snr / 10.) / 2) ** 0.5 if self._iscomplex else (10 ** (
                     -snr / 10.)) ** 0.5  # for complex xs.
         # noise = torch.randn_like(x).to(DEVICE) * std

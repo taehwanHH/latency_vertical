@@ -4,10 +4,21 @@ from param import Hyper_Param
 from DDPG_module.train_utils import parse_args
 
 args = parse_args()
-if args.snr is not None:
-    Hyper_Param['SNR'] = args.snr
-if args.channel_type is not None:
-    Hyper_Param['channel_type'] = args.channel_type
+
+Hyper_Param['SNR'] = args.snr
+Hyper_Param['channel_type'] = args.channel_type
+Hyper_Param['comm_latency'] = args.latency
+Hyper_Param['_iscomplex'] = args._iscomplex
+
+snr = Hyper_Param['SNR']
+channel_type = Hyper_Param['channel_type']
+comm_latency = Hyper_Param['comm_latency']
+_iscomplex = Hyper_Param['_iscomplex']
+print(f'SNR: {snr}')
+print(f'channel: {channel_type}')
+print(f'complex: {_iscomplex}')
+print(f'communication latency: {comm_latency}ms')
+
 
 
 from DDPG_module.DDPG import DDPG, Actor, Critic, prepare_training_inputs
@@ -69,9 +80,6 @@ for n_epi in range(total_eps):
     episode_return = 0
 
     while True:
-
-        start_time = time.time()
-
 
         a = agent.get_action(s, agent.epsilon*ou_noise()).view(-1)
 

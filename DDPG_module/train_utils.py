@@ -20,6 +20,9 @@ def parse_args():
     # argparse로 받을 파라미터들 정의 (snr과 channel_type만)
     parser.add_argument('--snr', type=int, default=Hyper_Param['SNR'], help='Signal-to-noise ratio')
     parser.add_argument('--channel_type', type=str, default=Hyper_Param['channel_type'], help='Type of communication channel')
+    parser.add_argument('--latency', type=int, default=Hyper_Param['comm_latency'], help='Communication latency')
+    parser.add_argument('--_iscomplex', type=bool, default=Hyper_Param['_iscomplex'], help='Channel complex')
+
 
     args = parser.parse_args()
     return args

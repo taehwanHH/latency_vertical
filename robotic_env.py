@@ -1,14 +1,13 @@
 import torch
 import gym
-import time
 import glfw
 import mujoco_py
 from scipy.spatial.transform import Rotation as R
 from param import Hyper_Param
 from param_robot import Robot_Param
-import time
 
 DEVICE = Hyper_Param['DEVICE']
+comm_latency = Hyper_Param['comm_latency']
 
 Sensing_interval = Robot_Param['Sensing_interval']
 End_flag = Robot_Param['End_flag']
@@ -17,7 +16,7 @@ Max_time= Robot_Param['Max_time']
 State_normalizer = Robot_Param['State_normalizer']
 h_threshold = Robot_Param['h_threshold']
 rot_threshold = Robot_Param['rot_threshold']
-comm_latency = Robot_Param['comm_latency']
+
 
 # mujoco-py
 xml_path = "sim_env.xml"

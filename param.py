@@ -30,13 +30,14 @@ Hyper_Param = {
     # 'CUEnc_latent_dim' : 4,
     'SensEnc_neurons' : [16],
     'SensDec_neurons' : [32],
-    'SensEnc_latent_dim' : 3,
+    'SensEnc_latent_dim' : 2,
     'CUEnc_neurons' : [32],
     'CUDec_neurons' : [32],
     'CUEnc_latent_dim' : 4,
     'channel_type': 'awgn',
     'SNR' : 5,
-    '_iscomplex' : True,
+    'comm_latency': 30,  # ms
+    '_iscomplex' : False,
     'Saved_using': False,
     'MODEL_PATH': "saved_model",
     'MODEL_NAME': "model_(227, 1001.0).h5"
