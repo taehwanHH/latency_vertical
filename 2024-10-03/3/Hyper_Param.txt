@@ -1,4 +1,4 @@
-today: 2024-10-03
+today: 2024-10-03 (3)
 DEVICE: cuda
 tau: 0.001
 discount_factor: 0.95
