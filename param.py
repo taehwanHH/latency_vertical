@@ -17,7 +17,7 @@ Hyper_Param = {
     'lr_critic': 0.005,
     'batch_size': 2048,
     'train_start': 2200,
-    'num_episode': 3000,
+    'num_episode': 5000,
     'memory_size': 10**4,
     'print_every': 1,
     'num_neurons': [32,64,32,16],
