@@ -1,7 +1,7 @@
 clear all;  clc;
 % close all;
 % .mat 파일 로드
-data_path = '2024-10-03/3/data.mat';
+data_path = '2024-10-04/2/data.mat';
 data = load(data_path);
 
 window_size = 100;
