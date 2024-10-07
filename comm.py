@@ -86,9 +86,11 @@ class NormalizeTX:
     def __init__(self, _iscomplex):
         self._iscomplex = _iscomplex
     def apply(self, x):
-        dim = x.shape[1]//2 if self._iscomplex else x.shape[1]
-        norm = 1 / torch.sqrt(torch.sum(x**2, dim=1))
-        return x*norm.view(-1,1)
+
+        num_symbol = x.shape[1]//2 if self._iscomplex else x.shape[1]
+        avg_power = torch.sum(x**2, dim=1) / num_symbol
+
+        return x/torch.sqrt(avg_power).view(-1,1)
 
 
 class Channel:

@@ -62,7 +62,7 @@ class Actor(nn.Module,RoboticEnv):
             encoded_list.append(normalized)
 
         encoded = torch.cat(encoded_list,dim=1).to(DEVICE)
-        seed = torch.randint(low=0, high=10000, size=(1,)).to(DEVICE).item()
+        seed = torch.randint(low=0, high=100000, size=(1,)).to(DEVICE).item()
 
         # encoded = self.sensor_encoder(state)
         # normalized = self.NormalizeTX.apply(encoded)

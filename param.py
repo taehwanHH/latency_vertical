@@ -36,7 +36,7 @@ Hyper_Param = {
     'CUEnc_latent_dim' : 4,
     'channel_type': 'awgn',
     'SNR' : 5,
-    'comm_latency': 30,  # ms
+    'comm_latency': 50,  # ms
     '_iscomplex' : False,
     'Saved_using': False,
     'MODEL_PATH': "saved_model",
