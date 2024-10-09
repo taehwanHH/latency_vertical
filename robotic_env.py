@@ -130,7 +130,7 @@ class RoboticEnv:
         else:
             self.flag = 0
 
-        if self.time_step > self.Max_time or self.flag == End_flag:
+        if self.time_step > self.Max_time or self.flag == End_flag or self.z_pos < 0.1:
             self.done = True
 
         return next_state, reward, self.done, {}
