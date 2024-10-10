@@ -1,7 +1,12 @@
 clear all;  clc;
 % close all;
 % .mat 파일 로드
-file_path = '2024-10-05/7';
+file_date = '2024-10-08';
+channel = '/fading/';
+latency = '0ms';
+
+channel_param = append(channel,latency);
+file_path = append(file_date,channel_param);
 data_path = append(file_path,'/data.mat');
 param_path = append(file_path,'/Hyper_Param.txt');
 param = readcell(param_path);
