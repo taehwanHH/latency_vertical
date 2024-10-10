@@ -30,7 +30,7 @@ Hyper_Param = {
     # 'CUEnc_latent_dim' : 4,
     'SensEnc_neurons' : [16],
     'SensDec_neurons' : [32],
-    'SensEnc_latent_dim' : 2,
+    'SensEnc_latent_dim' : 4,
     'CUEnc_neurons' : [32],
     'CUDec_neurons' : [32],
     'CUEnc_latent_dim' : 4,

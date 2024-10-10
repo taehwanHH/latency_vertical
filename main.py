@@ -132,19 +132,25 @@ for n_epi in range(total_eps):
 # Base directory path creation
 base_directory = os.path.join(Hyper_Param['today'])
 
-# Subdirectory index calculation
-if not os.path.exists(base_directory):
-    os.makedirs(base_directory)
-    index = 1
-else:
-    existing_dirs = [d for d in os.listdir(base_directory) if os.path.isdir(os.path.join(base_directory, d))]
-    indices = [int(d) for d in existing_dirs if d.isdigit()]
-    index = max(indices) + 1 if indices else 1
-
 # Subdirectory creation
-sub_directory = os.path.join(base_directory, str(index))
-os.makedirs(sub_directory)
+sub_directory = os.path.join(base_directory, Hyper_Param['channel_type'])
+if not os.path.exists(sub_directory):
+    os.makedirs(sub_directory)
 
+snr_title = f"{Hyper_Param['comm_latency']}ms"
+sub_directory = os.path.join(sub_directory, snr_title)
+if not os.path.exists(sub_directory):
+    os.makedirs(sub_directory)
+
+
+# # Subdirectory index calculation
+# if not os.path.exists(sub_directory):
+#     os.makedirs(sub_directory)
+#     index = 1
+# else:
+#     existing_dirs = [d for d in os.listdir(sub_directory) if os.path.isdir(os.path.join(base_directory, d))]
+#     indices = [int(d) for d in existing_dirs if d.isdigit()]
+#     index = max(indices) + 1 if indices else 1
 
 # Store Hyperparameters in txt file
 with open(os.path.join(sub_directory, 'Hyper_Param.txt'), 'w') as file:
@@ -152,7 +158,7 @@ with open(os.path.join(sub_directory, 'Hyper_Param.txt'), 'w') as file:
         file.write(f"{key}: {value}\n")
 
 # Store score data (matlab data file)
-savemat(os.path.join(sub_directory, 'data.mat'),{'stable_lifting_time': stable_lifting_time, 'box_z_pos': box_z_pos, 'success_time': success_time, 'parameters':Hyper_Param})
+savemat(os.path.join(sub_directory, 'data.mat'),{'stable_lifting_time': stable_lifting_time, 'box_z_pos': box_z_pos, 'success_time': success_time})
 # savemat(os.path.join(sub_directory, 'data.mat'),{'sim_res': cum_score_list,'sim_optimal': optimal_score_avg_value})
 # savemat(os.path.join(sub_directory, 'data.mat'), {'sim_res': cum_score_list,'sim_rand_res': cum_rand_score_list,
 #                                                   'sim_optimal_res': cum_optimal_score_list})
